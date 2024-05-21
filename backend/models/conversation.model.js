@@ -10,7 +10,7 @@ const conversationSchema = new mongoose.Schema({
         ref: "Message",
         default: [],
     }]
-    //createdAt, updatedAt
+    //createdAt, updatedAt => memeber since <created at>
 }, { timestamps: true })
 
 const Conversation = mongoose.model("Conversation", conversationSchema)

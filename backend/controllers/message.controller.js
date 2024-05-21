@@ -1,5 +1,6 @@
 import Message from '../models/message.model.js';
 import Conversation from '../models/conversation.model.js'
+
 export const sendMessage = async (req, res) => {
     console.log("Message sent ", req.params.id)
     try {
@@ -33,6 +34,21 @@ export const sendMessage = async (req, res) => {
         console.log("Send message error ", error)
         res.status(500).json({ error: "Internal server error" })
     }
+}
+export const getMessage = async (req, res) => {
+    console.log("Message get ", req.params.id)
+    try {
+        const { id: userToChatId } = req.params;
+        const senderId = req.user._id;
 
+        let conversation = await Conversation.findOne({
+            participants: { $all: [senderId, userToChatId] }
+        }).populate("messages")
 
+        if (!conversation) return res(200).json([]);
+        return res.status(200).json(conversation.messages)
+    } catch (error) {
+        console.log("Get message error ", error)
+        res.status(500).json({ error: "Internal server error" })
+    }
 }
