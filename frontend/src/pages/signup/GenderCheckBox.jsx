@@ -5,7 +5,7 @@ const GenderCheckBox = () => {
         <div className="flex items-center justify-around mt-4 p-2">
             <div className='form-control'>
                 <label className='label gap-2 cursor-pointer'>
-                    <span className='label-text '>
+                    <span className='label-text text-white'>
                         Male
                     </span>
                     <input type='checkbox' className='checkbox border-slate-600' />
@@ -13,7 +13,7 @@ const GenderCheckBox = () => {
             </div>
             <div className='form-control'>
                 <label className='label gap-2 cursor-pointer'>
-                    <span className='label-text '>
+                    <span className='label-text text-white'>
                         Female
                     </span>
                     <input type='checkbox' className='checkbox border-slate-600' />
@@ -21,7 +21,7 @@ const GenderCheckBox = () => {
             </div>
             <div className='form-control'>
                 <label className='label gap-2 cursor-pointer'>
-                    <span className='label-text '>
+                    <span className='label-text text-white'>
                         Non-binary
                     </span>
                     <input type='checkbox' className='checkbox border-slate-600' />
