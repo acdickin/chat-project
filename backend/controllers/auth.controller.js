@@ -6,13 +6,12 @@ export const login = async (req, res) => {
 
     try {
         const { username, password } = req.body;
-        console.log("Login with user: ", username)
+        console.log("Login with user: ", req.body)
         const user = await User.findOne({ username })
-        let pass = user.password || ""
 
+        let pass = user?.password || ""
         bcrypt.compare(password, pass, function (err, same) {
             if (same) {
-
                 generateToken(user._id, res);
                 res.status(200).json({
                     _id: user._id,
@@ -21,6 +20,7 @@ export const login = async (req, res) => {
                     profilePic: user.profilePic
                 })
             } else {
+                console.log("Invalid name or password")
                 res.status(400).json({ error: "Invalid name or password" })
             }
         })
